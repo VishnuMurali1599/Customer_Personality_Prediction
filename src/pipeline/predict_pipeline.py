@@ -34,6 +34,7 @@ class CustomData:
         Income:float,
         Kidhome: int,
         Teenhome: int,
+        Recency: int,
         MntWines: int,
         MntFruits: float,
         MntMeatProducts: float,
@@ -60,6 +61,8 @@ class CustomData:
         self.Kidhome = Kidhome
 
         self.Teenhome = Teenhome
+        
+        self.Recency = Recency
 
         self.MntWines = MntWines
 

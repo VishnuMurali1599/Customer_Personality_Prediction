@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Relationship Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            /* Remove fixed height to allow scrolling */
+            /* height: 100vh; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333333;
+            text-align: left;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333333;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Customer Relationship Prediction</h1>
+
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Education</label>
+                <select class="form-control" name="Education" placeholder="Select Education" required>
+                    <option class="placeholder" selected disabled value="">Select Education</option>
+                    <option value="Graduation">
+                        Graduation
+                    </option>
+                    <option value="PhD">
+                        PhD
+                    </option>
+                    <option value="Master">
+                        Master
+                    </option>
+                    <option value="2n Cycle">
+                        2n Cycle
+                    </option>
+                    <option value="Basic">
+                        Basic
+                    </option>
+                </select>
+            </div>
+    
+            <div class="mb-3">
+                <label class="form-label">Marital_Status</label>
+                <select class="form-control" name="Marital_Status" placeholder="Select Marital_Status" required>
+                    <option class="placeholder" selected disabled value="">Select Marital_Status</option>
+                    <option value="Married">
+                        Married
+                    </option>
+                    <option value="Together">
+                        Together
+                    </option>
+                    <option value="Single">
+                        Single
+                    </option>
+                    <option value="Divorced">
+                        Divorced
+                    </option>
+                    <option value="Widow">
+                        Widow
+                    </option>
+                    <option value="Alone">
+                        Alone
+                    </option>
+                    <option value="Absurd">
+                        Absurd
+                    </option>
+                    <option value="YOLO">
+                        YOLO
+                    </option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Enter Income</label>
+                <input class="form-control" type="number" name="Income"
+                    placeholder="Enter your Income" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Kidhome</label>
+                <input class="form-control" type="number" name="Kidhome"
+                    placeholder="Enter Kidhome" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Teenhome</label>
+                <input class="form-control" type="number" name="Teenhome"
+                    placeholder="Enter Teenhome" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter Recency</label>
+                <input class="form-control" type="number" name="Recency"
+                    placeholder="Enter Recency" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter MntWines</label>
+                <input class="form-control" type="number" name="MntWines"
+                    placeholder="Enter your MntWines" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter MntFruits</label>
+                <input class="form-control" type="number" name="MntFruits"
+                    placeholder="Enter MntFruits" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter MntMeatProducts</label>
+                <input class="form-control" type="number" name="MntMeatProducts"
+                    placeholder="Enter your MntMeatProducts" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter MntFishProducts</label>
+                <input class="form-control" type="number" name="MntFishProducts"
+                    placeholder="Enter your MntFishProducts" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter MntSweetProducts</label>
+                <input class="form-control" type="number" name="MntSweetProducts"
+                    placeholder="Enter your MntSweetProducts" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter MntGoldProds</label>
+                <input class="form-control" type="number" name="MntGoldProds"
+                    placeholder="Enter MntGoldProds" min='0' max='100000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter NumDealsPurchases</label>
+                <input class="form-control" type="number" name="NumDealsPurchases"
+                    placeholder="Enter your NumDealsPurchases" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter NumWebPurchases</label>
+                <input class="form-control" type="number" name="NumWebPurchases"
+                    placeholder="Enter NumWebPurchases" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter NumCatalogPurchases</label>
+                <input class="form-control" type="number" name="NumCatalogPurchases"
+                    placeholder="Enter NumCatalogPurchases" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter NumStorePurchases</label>
+                <input class="form-control" type="number" name="NumStorePurchases"
+                    placeholder="Enter NumStorePurchases" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter NumWebVisitsMonth</label>
+                <input class="form-control" type="number" name="NumWebVisitsMonth"
+                    placeholder="Enter NumWebVisitsMonth" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter Complain</label>
+                <input class="form-control" type="number" name="Complain"
+                    placeholder="Enter your Complain" min='0' max='100000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter Present_Age_CST</label>
+                <input class="form-control" type="number" name="Present_Age_CST"
+                    placeholder="Enter your Present_Age_CST" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter Customer_Since_year</label>
+                <input class="form-control" type="number" name="Customer_Since_year"
+                    placeholder="Enter your Customer_Since_year" min='0' max='1000000' />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Enter AcceptedCmp</label>
+                <input class="form-control" type="number" name="AcceptedCmp"
+                    placeholder="Enter your AcceptedCmp" min='0' max='100000' />
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict" required />
+            </div>
+        </form>
+
+        <h2>
+            {% if results == 0 %}
+                Result is 0: The chance of Customer taking/moving other company is very Less
+            {% elif results == 1 %}
+                Result is 1: The chance of Customer taking/moving other company is very High
+            {% endif %}
+        </h2>
+    </div>
+</body>
+</html>
