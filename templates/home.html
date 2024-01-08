@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Relationship Prediction</title>
+    <title>Customer Personality Analysis Prediction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,7 +70,7 @@
 
 <body>
     <div class="login">
-        <h1>Customer Relationship Prediction</h1>
+        <h1>Customer Personality Prediction</h1>
 
         <form action="{{ url_for('predict_datapoint')}}" method="post">
             <div class="mb-3">
@@ -129,7 +129,7 @@
             <div class="mb-3">
                 <label class="form-label">Enter Income</label>
                 <input class="form-control" type="number" name="Income"
-                    placeholder="Enter Income of People" min='0' max='1000000' />
+                    placeholder="Enter the Income " min='0' max='1000000' />
             </div>
             <div class="mb-3">
                 <label class="form-label">Kids in Home</label>
@@ -154,7 +154,7 @@
             <div class="mb-3">
                 <label class="form-label">Monthly fruits purchase</label>
                 <input class="form-control" type="number" name="MntFruits"
-                    placeholder="Enter Monthly wines purchase" min='0' max='1000000' />
+                    placeholder="Enter Monthly fruits purchase" min='0' max='1000000' />
             </div>
             <div class="mb-3">
                 <label class="form-label">Monthly meat purchase</label>
@@ -228,9 +228,9 @@
 
         <h2>
             {% if results == 0 %}
-                Result is 0: The chance of Customer taking/moving other company is very Less
+                Result is 0: The customer will have negative attitude towards the new product.
             {% elif results == 1 %}
-                Result is 1: The chance of Customer taking/moving other company is very High
+                Result is 1: The customer will have postive attitude towards the new product.
             {% endif %}
         </h2>
     </div>
